@@ -23,6 +23,22 @@ end
 end
 endmodule
 
+//or 
+
+module jkff(j,k,clk,out);
+input j,k,clk;
+output reg out;
+always@(posedge clk)begin 
+case({j,k})
+2'b00: out=out;
+2'b01: out=0;
+2'b10: out=1;
+2'b11: out=~out;
+endcase
+end
+endmodule
+
+
 module test();
 reg j,k,clk;
 wire o;
