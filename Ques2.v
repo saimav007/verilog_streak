@@ -3,16 +3,18 @@
 */
 module a(clk,out);
 input clk;
-output reg out;
+output reg [1:0]out;
 always @(posedge clk)begin 
 out=0;
 out<=1;
-$display(out);
+out<=2;
+out<=3;
 end
 endmodule
+
 module test();
 reg clk;
-wire out;
+wire [1:0]out;
 a a1(clk,out);
 initial begin 
 clk=1'b0;
@@ -20,11 +22,30 @@ clk=1'b0;
 clk=1;
 #5;
 clk=0;
+#5;
+clk=1;
+#5;
+clk=0;
+
 #10 $stop();
+end
+initial begin 
+$monitor("time=%t, clk=%d, out=%d",$time,clk,out);
+$dumpfile("a.vcd");
+$dumpvars();
 end
 endmodule
 
-output 
-0
-//  blocking statement alots the value to the lhs immidiatrely after computation ...
-// non blovking doesent 
+
+VCD info: dumpfile a.vcd opened for output.
+time=                   0, clk=0, out=x
+time=                   5, clk=1, out=3
+time=                  10, clk=0, out=3
+time=                  15, clk=1, out=3
+time=                  20, clk=0, out=3
+main.v:175: $stop called at 30 (1s)
+** VVP Stop(0) **
+** Flushing output streams.
+** Current simulation time is 30 ticks.
+> 
+  
