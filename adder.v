@@ -83,6 +83,6 @@ module test();
     $monitor("time=%0t, A=%b, B=%b ,CIN=%b, SUM=%b, COUT=%b", $time, a, b, cin, s, cout);
     $dumpfile("adder_4bit.vcd");
     $dumpvars();
-    #100 $finish;
+    #200 $finish;
   end
 endmodule
