@@ -42,7 +42,7 @@ t=1'b0;
 #10;
 t=1'b1;
 #10;
-#20 $stop();
+#50 $stop();
 end
  initial begin 
  $monitor("time=%t,t=%b,clk=%b,rst=%b,q=%b",$time,t,clk,rst,q);
